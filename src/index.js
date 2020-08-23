@@ -1,14 +1,23 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom";
+import {createBrowserHistory} from "history";
+import {Router} from "react-router-dom";
+import {Provider} from 'react-redux';
+import {store} from './helpers';
 import * as serviceWorker from './serviceWorker';
+import AppRouter from "./routers/AppRouter";
+
+import './assets/main.css';
+
+const history = createBrowserHistory();
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+    <Provider store={store}>
+        <Router history={history}>
+            <AppRouter/>
+        </Router>
+    </Provider>,
+    document.getElementById("root")
 );
 
 // If you want your app to work offline and load faster, you can change
